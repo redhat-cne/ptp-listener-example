@@ -1,4 +1,4 @@
-package listernerlib
+package listenerlib
 
 import (
 	"context"
@@ -20,7 +20,7 @@ import (
 	"github.com/redhat-cne/sdk-go/pkg/event"
 	ptpEvent "github.com/redhat-cne/sdk-go/pkg/event/ptp"
 	"github.com/sirupsen/logrus"
-	exports "github.com/test-network-function/ptp-listerner-exports"
+	exports "github.com/test-network-function/ptp-listener-exports"
 
 	"github.com/google/uuid"
 	httpevents "github.com/redhat-cne/sdk-go/pkg/protocol/http"
@@ -77,7 +77,7 @@ func getEvent(w http.ResponseWriter, req *http.Request) {
 	defer req.Body.Close()
 
 	aSource := req.Header.Get("Ce-Source")
-	aType := exports.ToEventType[req.Header.Get("Ce-Type")]
+	aType := req.Header.Get("Ce-Type")
 	aTime, err := types.ParseTimestamp(req.Header.Get("Ce-Time"))
 	if err != nil {
 		logrus.Error(err)
@@ -92,17 +92,14 @@ func getEvent(w http.ResponseWriter, req *http.Request) {
 	e := string(bodyBytes)
 
 	if e != "" {
-		logrus.Infof("received event %s", string(bodyBytes))
-		switch aType {
-		case exports.LockState:
-			aEvent, err := createLockStateEvent(aSource, aType, aTime.Time, bodyBytes)
-			if err != nil {
-				logrus.Errorf("could not create event %s", err)
-			}
-			Ps.Publish(string(ptpEvent.OsClockSyncStateChange), aEvent)
-		default:
-			logrus.Errorf("received unsupported event %s", string(bodyBytes))
+		logrus.Debugf("received event %s", string(bodyBytes))
+
+		aEvent, err := createStoredEvent(aSource, aType, aTime.Time, bodyBytes)
+		if err != nil {
+			logrus.Errorf("could not create event %s", err)
 		}
+		logrus.Info(aEvent)
+		Ps.Publish(aType, aEvent)
 	} else {
 		w.WriteHeader(http.StatusNoContent)
 	}
@@ -240,7 +237,7 @@ func StartListening(ptpEventServiceLocalhostPort,
 	return nil
 }
 
-func createLockStateEvent(source string, eventType exports.EventType, eventTime time.Time, data []byte) (aStoredEvent exports.StoredEvent, err error) {
+func createStoredEvent(source, eventType string, eventTime time.Time, data []byte) (aStoredEvent exports.StoredEvent, err error) {
 	var e event.Data
 	err = json.Unmarshal(data, &e)
 	if err != nil {
@@ -255,26 +252,15 @@ func createLockStateEvent(source string, eventType exports.EventType, eventTime 
 	// set log to Info level for performance measurement
 	logrus.Debugf("Latency for the event: %d ms\n", latency)
 
-	var values []int64
+	valuesFull := exports.StoredEventValues{}
+	valuesShort := exports.StoredEventValues{}
 	for _, v := range e.Values {
-		switch v.ValueType { //nolint:exhaustive // not supporting REDFISH_EVENT
-		case event.ENUMERATION:
-			if str, ok := v.Value.(string); ok {
-				values[0] = int64(exports.ToLockStateValue[str])
-			} else {
-				logrus.Error("could not extract Lockstate value")
-			}
-		case event.DECIMAL:
-			if str, ok := v.Value.(string); ok {
-				i, err := strconv.ParseInt(str, 10, 64)
-				if err != nil {
-					logrus.Error("could not extract Lockstate value")
-				}
-				values[1] = int64(exports.LockStateValue(i))
-			} else {
-				logrus.Error("could not extract Lockstate value")
-			}
-		}
+		dataType := string(v.DataType)
+		valueType := string(v.ValueType)
+		resource := v.Resource
+		valuesFull[resource+"_"+dataType+"_"+valueType] = v.Value
+		valuesShort[dataType] = v.Value
 	}
-	return exports.StoredEvent{TimeStamp: eventTime, Source: source, Type: eventType, Values: values}, nil
+	return exports.StoredEvent{exports.EventTimeStamp: eventTime, exports.EventType: eventType, exports.EventSource: source,
+		exports.EventValuesFull: valuesFull, exports.EventValuesShort: valuesShort}, nil
 }

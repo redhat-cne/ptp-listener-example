@@ -184,12 +184,12 @@ github.com/spf13/pflag
 # github.com/test-network-function/channel-pubsub v0.0.0-00010101000000-000000000000 => ../channel-pubsub
 ## explicit; go 1.19
 github.com/test-network-function/channel-pubsub
-# github.com/test-network-function/ptp-listerner-exports v0.0.0-00010101000000-000000000000 => ../ptp-listener-exports
+# github.com/test-network-function/ptp-listener-exports v0.0.0-00010101000000-000000000000 => ../ptp-listener-exports
 ## explicit; go 1.19
-github.com/test-network-function/ptp-listerner-exports
-# github.com/test-network-function/ptp-listerner-lib v0.0.0-00010101000000-000000000000 => ../ptp-listener-lib
+github.com/test-network-function/ptp-listener-exports
+# github.com/test-network-function/ptp-listener-lib v0.0.0-00010101000000-000000000000 => ../ptp-listener-lib
 ## explicit; go 1.19
-github.com/test-network-function/ptp-listerner-lib
+github.com/test-network-function/ptp-listener-lib
 # github.com/xlab/treeprint v1.1.0
 ## explicit; go 1.13
 github.com/xlab/treeprint
@@ -668,7 +668,7 @@ sigs.k8s.io/structured-merge-diff/v4/value
 # sigs.k8s.io/yaml v1.3.0
 ## explicit; go 1.12
 sigs.k8s.io/yaml
-# github.com/test-network-function/ptp-listerner-exports => ../ptp-listener-exports
-# github.com/test-network-function/ptp-listerner-lib => ../ptp-listener-lib
+# github.com/test-network-function/ptp-listener-exports => ../ptp-listener-exports
+# github.com/test-network-function/ptp-listener-lib => ../ptp-listener-lib
 # github.com/openshift/ptp-operator => ../../ptp-operator
 # github.com/test-network-function/channel-pubsub => ../channel-pubsub

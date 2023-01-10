@@ -1,19 +1,10 @@
 package exports
 
 import (
-	"sync"
-	"time"
-
 	ptpEvent "github.com/redhat-cne/sdk-go/pkg/event/ptp"
 )
 
-type EventType int64
-
-const (
-	LockState EventType = iota
-	Port9043            = 9043
-)
-
+// Conversion for LockState event enumeration to int
 type LockStateValue int64
 
 const (
@@ -28,17 +19,7 @@ const (
 	Unlocked
 )
 
-type StoredEvent struct {
-	TimeStamp time.Time
-	Source    string
-	Type      EventType
-	Values     []int64
-}
-
 var (
-	Mu               sync.Mutex
-	AllEvents        []StoredEvent
-	ToEventType      = map[string]EventType{string(ptpEvent.OsClockSyncStateChange): LockState}
 	ToLockStateValue = map[string]LockStateValue{
 		string(ptpEvent.ACQUIRING_SYNC):        AcquiringSync,
 		string(ptpEvent.ANTENNA_DISCONNECTED):  AntennaDisconnected,
@@ -51,5 +32,3 @@ var (
 		string(ptpEvent.UNLOCKED):              Unlocked,
 	}
 )
-
-type EventReceivedCallback func(source string, eventType EventType, eventTime time.Time, data []byte)

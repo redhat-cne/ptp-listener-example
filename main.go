@@ -6,8 +6,8 @@ import (
 
 	ptpEvent "github.com/redhat-cne/sdk-go/pkg/event/ptp"
 	"github.com/sirupsen/logrus"
-	exports "github.com/test-network-function/ptp-listerner-exports"
-	lib "github.com/test-network-function/ptp-listerner-lib"
+	exports "github.com/test-network-function/ptp-listener-exports"
+	lib "github.com/test-network-function/ptp-listener-lib"
 )
 
 func main() {

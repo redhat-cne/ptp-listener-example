@@ -1,10 +1,10 @@
-module github.com/test-network-function/ptp-listerner-example
+module github.com/test-network-function/ptp-listener-example
 
 go 1.19
 
-replace github.com/test-network-function/ptp-listerner-exports => ../ptp-listener-exports
+replace github.com/test-network-function/ptp-listener-exports => ../ptp-listener-exports
 
-replace github.com/test-network-function/ptp-listerner-lib => ../ptp-listener-lib
+replace github.com/test-network-function/ptp-listener-lib => ../ptp-listener-lib
 
 replace github.com/openshift/ptp-operator => ../../ptp-operator
 
@@ -13,8 +13,8 @@ replace github.com/test-network-function/channel-pubsub => ../channel-pubsub
 require (
 	github.com/redhat-cne/sdk-go v0.1.1-0.20221202175356-6d25e1b3c0be
 	github.com/sirupsen/logrus v1.9.0
-	github.com/test-network-function/ptp-listerner-exports v0.0.0-00010101000000-000000000000
-	github.com/test-network-function/ptp-listerner-lib v0.0.0-00010101000000-000000000000
+	github.com/test-network-function/ptp-listener-exports v0.0.0-00010101000000-000000000000
+	github.com/test-network-function/ptp-listener-lib v0.0.0-00010101000000-000000000000
 )
 
 require (
