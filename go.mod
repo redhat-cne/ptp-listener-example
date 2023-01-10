@@ -2,19 +2,11 @@ module github.com/test-network-function/ptp-listener-example
 
 go 1.19
 
-replace github.com/test-network-function/ptp-listener-exports => ../ptp-listener-exports
-
-replace github.com/test-network-function/ptp-listener-lib => ../ptp-listener-lib
-
-replace github.com/openshift/ptp-operator => ../../ptp-operator
-
-replace github.com/test-network-function/channel-pubsub => ../channel-pubsub
-
 require (
 	github.com/redhat-cne/sdk-go v0.1.1-0.20221202175356-6d25e1b3c0be
 	github.com/sirupsen/logrus v1.9.0
-	github.com/test-network-function/ptp-listener-exports v0.0.0-00010101000000-000000000000
-	github.com/test-network-function/ptp-listener-lib v0.0.0-00010101000000-000000000000
+	github.com/test-network-function/ptp-listener-exports v0.0.2
+	github.com/test-network-function/ptp-listener-lib v0.0.3
 )
 
 require (
@@ -60,7 +52,7 @@ require (
 	github.com/prometheus/procfs v0.8.0 // indirect
 	github.com/spf13/cobra v1.4.0 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
-	github.com/test-network-function/channel-pubsub v0.0.0-00010101000000-000000000000 // indirect
+	github.com/test-network-function/channel-pubsub v0.0.2 // indirect
 	github.com/xlab/treeprint v1.1.0 // indirect
 	go.starlark.net v0.0.0-20200306205701-8dd3e2ee1dd5 // indirect
 	go.uber.org/atomic v1.10.0 // indirect
