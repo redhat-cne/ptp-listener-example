@@ -149,7 +149,7 @@ github.com/test-network-function/channel-pubsub
 # github.com/test-network-function/ptp-listener-exports v0.0.3
 ## explicit; go 1.19
 github.com/test-network-function/ptp-listener-exports
-# github.com/test-network-function/ptp-listener-lib v0.0.5 => ../ptp-listener-lib
+# github.com/test-network-function/ptp-listener-lib v0.0.5
 ## explicit; go 1.19
 github.com/test-network-function/ptp-listener-lib
 # github.com/xlab/treeprint v1.1.0
@@ -630,4 +630,3 @@ sigs.k8s.io/structured-merge-diff/v4/value
 # sigs.k8s.io/yaml v1.3.0
 ## explicit; go 1.12
 sigs.k8s.io/yaml
-# github.com/test-network-function/ptp-listener-lib => ../ptp-listener-lib

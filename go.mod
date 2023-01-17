@@ -2,8 +2,6 @@ module github.com/test-network-function/ptp-listener-example
 
 go 1.19
 
-replace github.com/test-network-function/ptp-listener-lib => ../ptp-listener-lib
-
 require (
 	github.com/redhat-cne/sdk-go v0.1.1-0.20221202175356-6d25e1b3c0be
 	github.com/sirupsen/logrus v1.9.0
