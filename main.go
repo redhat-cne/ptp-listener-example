@@ -22,9 +22,9 @@ func main() {
 	ch1 := lib.Ps.Subscribe(string(ptpEvent.OsClockSyncStateChange))
 
 	err := lib.StartListening(
-		exports.Port9043,
-		exports.Port9043,
-		"linuxptp-daemon-sxtmv",
+		exports.Port9085,
+		exports.Port9085,
+		"linuxptp-daemon-nxsds",
 		"master2",
 		"openshift-ptp",
 		"/home/deliedit/.kube/config.bos2.cluster-2",
@@ -37,7 +37,7 @@ func main() {
 	}
 
 	go listener("1", ch1)
-	const sleepTimeout = 5
+	const sleepTimeout = 30
 	time.Sleep(time.Minute * sleepTimeout)
 	lib.Ps.Close()
 }
