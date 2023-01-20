@@ -438,8 +438,8 @@ github.com/test-network-function/channel-pubsub v0.0.3 h1:H0hn4+CTHjMsQuF7H2Wtrp
 github.com/test-network-function/channel-pubsub v0.0.3/go.mod h1:ofjdslPcAB/E/A6fBrY6cFp8XkL/A33vNGlbs73mCpU=
 github.com/test-network-function/ptp-listener-exports v0.0.3 h1:pmlMITWuWFJwZ52Gz5pauM/YjE6zeATBZnvXfiNMsfA=
 github.com/test-network-function/ptp-listener-exports v0.0.3/go.mod h1:TR3SWr9R7kjZfrn5rnjtVnpvnPEvBwYXI7+H+4Pnzkk=
-github.com/test-network-function/ptp-listener-lib v0.0.5 h1:ouQYvAtXmUzvA00njxDCE7aYwyHrQLGOlhHeYWuDlRI=
-github.com/test-network-function/ptp-listener-lib v0.0.5/go.mod h1:kMkeA7j8klml4QpBEIpzO6vYAbCyPsw1NrqDBctBtfQ=
+github.com/test-network-function/ptp-listener-lib v0.0.6 h1:FkjJaleOctbSyjPFMM4yw+tMRtLbGs/kEyn9yIhRbv4=
+github.com/test-network-function/ptp-listener-lib v0.0.6/go.mod h1:PtbMKqFm39Y52VBatUW6JS6OSeTn8ZRD2vr9hyOFlfU=
 github.com/tidwall/pretty v1.0.0/go.mod h1:XNkn88O1ChpSDQmQeStsy+sBenx6DDtFZJxhVysOjyk=
 github.com/tmc/grpc-websocket-proxy v0.0.0-20190109142713-0ad062ec5ee5/go.mod h1:ncp9v5uamzpCO7NfCPTXjqaC+bZgJeR0sMTm6dMHP7U=
 github.com/ugorji/go v1.1.4/go.mod h1:uQMGLiO92mf5W77hV/PUCpI3pbzQx3CRekS0kk+RGrc=

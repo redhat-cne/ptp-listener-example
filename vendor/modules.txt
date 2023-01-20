@@ -149,7 +149,7 @@ github.com/test-network-function/channel-pubsub
 # github.com/test-network-function/ptp-listener-exports v0.0.3
 ## explicit; go 1.19
 github.com/test-network-function/ptp-listener-exports
-# github.com/test-network-function/ptp-listener-lib v0.0.5
+# github.com/test-network-function/ptp-listener-lib v0.0.6
 ## explicit; go 1.19
 github.com/test-network-function/ptp-listener-lib
 # github.com/xlab/treeprint v1.1.0
