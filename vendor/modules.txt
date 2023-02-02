@@ -125,6 +125,15 @@ github.com/peterbourgon/diskv
 # github.com/pkg/errors v0.9.1
 ## explicit
 github.com/pkg/errors
+# github.com/redhat-cne/channel-pubsub v0.0.4
+## explicit; go 1.19
+github.com/redhat-cne/channel-pubsub
+# github.com/redhat-cne/ptp-listener-exports v0.0.4
+## explicit; go 1.19
+github.com/redhat-cne/ptp-listener-exports
+# github.com/redhat-cne/ptp-listener-lib v0.0.8
+## explicit; go 1.19
+github.com/redhat-cne/ptp-listener-lib
 # github.com/redhat-cne/sdk-go v0.1.1-0.20221202175356-6d25e1b3c0be
 ## explicit; go 1.17
 github.com/redhat-cne/sdk-go/pkg/event
@@ -143,15 +152,6 @@ github.com/spf13/cobra
 # github.com/spf13/pflag v1.0.5
 ## explicit; go 1.12
 github.com/spf13/pflag
-# github.com/test-network-function/channel-pubsub v0.0.3
-## explicit; go 1.19
-github.com/test-network-function/channel-pubsub
-# github.com/test-network-function/ptp-listener-exports v0.0.3
-## explicit; go 1.19
-github.com/test-network-function/ptp-listener-exports
-# github.com/test-network-function/ptp-listener-lib v0.0.6
-## explicit; go 1.19
-github.com/test-network-function/ptp-listener-lib
 # github.com/xlab/treeprint v1.1.0
 ## explicit; go 1.13
 github.com/xlab/treeprint

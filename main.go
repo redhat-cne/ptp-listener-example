@@ -5,10 +5,10 @@ import (
 	"os"
 	"time"
 
+	exports "github.com/redhat-cne/ptp-listener-exports"
+	lib "github.com/redhat-cne/ptp-listener-lib"
 	ptpEvent "github.com/redhat-cne/sdk-go/pkg/event/ptp"
 	"github.com/sirupsen/logrus"
-	exports "github.com/test-network-function/ptp-listener-exports"
-	lib "github.com/test-network-function/ptp-listener-lib"
 )
 
 const (

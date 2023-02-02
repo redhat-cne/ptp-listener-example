@@ -1,12 +1,12 @@
-module github.com/test-network-function/ptp-listener-example
+module github.com/redhat-cne/ptp-listener-example
 
 go 1.19
 
 require (
+	github.com/redhat-cne/ptp-listener-exports v0.0.4
+	github.com/redhat-cne/ptp-listener-lib v0.0.8
 	github.com/redhat-cne/sdk-go v0.1.1-0.20221202175356-6d25e1b3c0be
 	github.com/sirupsen/logrus v1.9.0
-	github.com/test-network-function/ptp-listener-exports v0.0.3
-	github.com/test-network-function/ptp-listener-lib v0.0.6
 )
 
 require (
@@ -42,9 +42,9 @@ require (
 	github.com/munnerz/goautoneg v0.0.0-20191010083416-a7dc8b61c822 // indirect
 	github.com/peterbourgon/diskv v2.0.1+incompatible // indirect
 	github.com/pkg/errors v0.9.1 // indirect
+	github.com/redhat-cne/channel-pubsub v0.0.4 // indirect
 	github.com/spf13/cobra v1.4.0 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
-	github.com/test-network-function/channel-pubsub v0.0.3 // indirect
 	github.com/xlab/treeprint v1.1.0 // indirect
 	go.starlark.net v0.0.0-20200306205701-8dd3e2ee1dd5 // indirect
 	go.uber.org/atomic v1.10.0 // indirect

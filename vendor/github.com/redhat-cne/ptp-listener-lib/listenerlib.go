@@ -17,15 +17,15 @@ import (
 
 	"github.com/anthhub/forwarder"
 
+	exports "github.com/redhat-cne/ptp-listener-exports"
 	"github.com/redhat-cne/sdk-go/pkg/event"
 	ptpEvent "github.com/redhat-cne/sdk-go/pkg/event/ptp"
 	"github.com/redhat-cne/sdk-go/pkg/pubsub"
 	"github.com/sirupsen/logrus"
-	exports "github.com/test-network-function/ptp-listener-exports"
 
+	chanpubsub "github.com/redhat-cne/channel-pubsub"
 	"github.com/redhat-cne/sdk-go/pkg/types"
 	api "github.com/redhat-cne/sdk-go/v1/pubsub"
-	chanpubsub "github.com/test-network-function/channel-pubsub"
 )
 
 const (
@@ -136,7 +136,7 @@ const (
 	sleep5s               = 5 * time.Second
 )
 
-func SubscribeAnWaitForAllEvents(kubernetesHost, nodeName, apiAddr string, localHTTPServerPort int) {
+func SubscribeAnWaitForAllEvents(kubernetesHost, nodeName, apiAddr string, localHTTPServerPort int) (err error) {
 	supportedResources := initResources(nodeName)
 	localListeningEndpoint = fmt.Sprintf("%s:%d", GetOutboundIP(kubernetesHost).String(), localHTTPServerPort)
 	go server(fmt.Sprintf(":%d", localHTTPServerPort)) // spin local api
@@ -144,10 +144,11 @@ func SubscribeAnWaitForAllEvents(kubernetesHost, nodeName, apiAddr string, local
 	for _, resource := range supportedResources {
 		err := SubscribeAllEvents(resource, apiAddr, localListeningEndpoint)
 		if err != nil {
-			logrus.Errorf("could not register resource=%s at api addr=%s with endpoint=%s , err=%s", resource, apiAddr, localListeningEndpoint, err)
+			return fmt.Errorf("could not register resource=%s at api addr=%s with endpoint=%s , err=%s", resource, apiAddr, localListeningEndpoint, err)
 		}
 	}
 	logrus.Info("waiting for events")
+	return nil
 }
 
 func UnsubscribeAllEvents(kubernetesHost, nodeName string) {
@@ -300,7 +301,10 @@ func StartListening(ptpEventServiceLocalhostPort,
 	if err != nil {
 		return err
 	}
-	SubscribeAnWaitForAllEvents(kubernetesHost, nodeName, "localhost:"+strconv.Itoa(ptpEventServiceLocalhostPort), localHTTPServerPort)
+	err = SubscribeAnWaitForAllEvents(kubernetesHost, nodeName, "localhost:"+strconv.Itoa(ptpEventServiceLocalhostPort), localHTTPServerPort)
+	if err != nil {
+		return fmt.Errorf("failed to subscribe to events, err=%s", err)
+	}
 	return nil
 }
 
